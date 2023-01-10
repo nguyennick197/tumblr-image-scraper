@@ -34,9 +34,6 @@ async function getTumblrImages(offset = 0) {
     for (const post of resp.posts) {
         let photoCounter = 0;
         for (const photo of post.photos) {
-            if (photoCounter == 0) {
-                console.log(photo);
-            }
             photosToDownload.push({
                 filename: `tumblr_${post.id}_${photoCounter}_${photo.original_size.width}.png`,
                 url: photo.original_size.url,
