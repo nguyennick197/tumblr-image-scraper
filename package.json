@@ -1,0 +1,18 @@
+{
+  "name": "tumblr-image-downloader",
+  "version": "1.0.0",
+  "description": "Downloads images from a Tumblr Blog",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Nick Nguyen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nguyennick197/tumblr-image-downloader/issues"
+  },
+  "homepage": "https://github.com/nguyennick197/tumblr-image-downloader#readme",
+  "dependencies": {
+    "tumblr.js": "^3.0.0"
+  }
+}
