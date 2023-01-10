@@ -8,8 +8,10 @@ This is a NodeJs script that allows you to download all images from a selected T
 
 - Get your `consumer_key`, `consumer_secret`, `token`, and `token_secret` and add those to the `config.json` file.
 
-- Add the blog you want to download images from and any tags (optional) that you want to filter posts by to the `config.json` file.
+- Add the blog you want to download images from to the `config.json` file.
 
+- (Optional) If you would like, you can add any tags you would like to filter a blog's posts by to the `config.json` file in a comma separated list format. ex: `"wholesome,doodles,cute"`
+ 
 - In this directory, run `npm install` to install the necessary node packages.
 
 - In this directory, run `node index.js` which will download all the photos from the blog into a folder with the blogs name.
