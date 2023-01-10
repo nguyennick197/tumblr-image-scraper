@@ -1,19 +1,25 @@
 const tumblr = require('tumblr.js');
 const fs = require('fs');
 
-const clientSettings = require('./config.json');
+const config = require('./config.json');
 const { downloadImage } = require('./utils/downloadImage');
 
-const client = tumblr.createClient(clientSettings);
+const { consumer_key, consumer_secret, token, token_secret, blog, tags } = config;
 
-const blog = "positivedoodles"
-const tags = ["doodles", "doodle"]
+const client = tumblr.createClient({
+    consumer_key,
+    consumer_secret,
+    token,
+    token_secret
+});
 
-const photosToDownload = []
+let tagArr = [];
+if (tags) tagArr = tags.split(",");
+const photosToDownload = [];
 
 function getBlogPosts(offset) {
     return new Promise(resolve => {
-        client.blogPosts(blog, { type: 'photo', offset, tag: tags }, function (err, resp) {
+        client.blogPosts(blog, { type: 'photo', offset, tag: tagArr }, function (err, resp) {
             resolve({ err, resp });
         })
     })
@@ -56,10 +62,15 @@ async function downloadAllPhotos() {
 }
 
 async function main() {
+    if (!blog) {
+        console.log("You must add a blog to the config.json file.");
+        return;
+    }
     await getTumblrImages(0);
     console.log("All photos retrieved: ", photosToDownload.length);
     await downloadAllPhotos();
-    console.log(`Done! All files downloaded to the /${blog} folder.`)
+    console.log(`Done! All files downloaded to the /${blog} folder.`);
 }
 
 main();
+
