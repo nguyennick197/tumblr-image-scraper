@@ -1,4 +1,4 @@
-# tumblr-image-downloader
+# tumblr-image-scraper
 
 This is a NodeJs script that allows you to download all images from a selected Tumblr blog.
 
